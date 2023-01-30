@@ -1,0 +1,103 @@
+:root {
+}
+
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-V"),
+    url('./assets/fonts/Inter/Inter-Thin.otf') format("truetype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-V"),
+    url('./assets/fonts/Inter/Inter-Light.otf') format("truetype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-V"),
+    url('./assets/fonts/Inter/Inter-Regular.otf') format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-V"),
+    url('./assets/fonts/Inter/Inter-Medium.otf') format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-V"),
+    url('./assets/fonts/Inter/Inter-SemiBold.otf') format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: local("Inter-V"),
+    url('./assets/fonts/Inter/Inter-Bold.otf') format("truetype");
+  font-weight: 600;
+}
+
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  text-rendering: optimizeSpeed;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}
