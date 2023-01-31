@@ -47,10 +47,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "backend.urls"
 
+FRONTEND_DIR = BASE_DIR / 'frontend'
+
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            FRONTEND_DIR / 'build',
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -127,6 +131,9 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = "static/"
+STATICFILES_DIRS = [
+    FRONTEND_DIR / 'build/static',
+]
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
