@@ -54,8 +54,7 @@ const MyProfile = () => {
         <TextContainer>
           <Label>Моя анкета</Label>
           <Description>
-            Короткое описание о чем
-            о чем и для чего
+            Расскажите о себе, своём образовании или опыте работы
           </Description>
           <Link onClick={() => navigate('/my-profiles')}>
             Заполнить/Редактировать

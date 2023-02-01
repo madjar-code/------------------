@@ -84,7 +84,7 @@ const ConfirmDeletion = ({ handleClose, handleDelete }) => {
         </SmallLabel>
         <ConfirmButton 
           onClick={() => {
-            setInterval(() => handleDelete(), 1500)
+            setTimeout(() => handleDelete(), 1000)
           }}>
           Подтвердить
         </ConfirmButton>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from 'styled-components'
-import { ReactComponent as Image } from "../../assets/images/PA2.svg";
+import image from '../../assets/images/PA2.svg'
+// import { ReactComponent as Image } from "../../assets/images/PA2.svg";
 
 const Container = styled.div`
   width: 388px;
@@ -35,6 +36,9 @@ const Description = styled.div`
   font-weight: 200;
 `
 
+const Image = styled.img`
+`
+
 const Link = styled.a`
   font-size: 12px;
   text-decoration: underline;
@@ -53,14 +57,14 @@ const CareerRoutes = () => {
         <TextContainer>
           <Label>Карьерный маршрут</Label>
           <Description>
-            Короткое описание о чем
-            о чем и для чего
+            Постройте карьерные маршруты,
+            которые подойдут именно Вам
           </Description>
           <Link href="my-routes">
             Открыть
           </Link>
         </TextContainer>
-        <Image/>
+        <Image src={image}/>
       </Wrapper>
     </Container>
   )
