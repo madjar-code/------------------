@@ -174,7 +174,7 @@ const Register = () => {
         }
         setValid(false)
       })
-    navigate('/personal-account')
+    setTimeout(() => navigate('/personal-account'), 1500)
   }
 
   return(

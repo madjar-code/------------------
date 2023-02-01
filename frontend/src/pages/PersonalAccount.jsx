@@ -177,6 +177,13 @@ const PersonalAccount = () => {
           <MiddleContainer>
             <BigLabel>Рекомендации</BigLabel>
             <Actual>
+              <ChevronRightIcon
+                onClick={() => navigate('/actual')}
+                fontSize="large" sx={{
+                  position: 'absolute',
+                  cursor: 'pointer',
+                  marginLeft: '760px',
+                  marginTop: '25px'}}/>
               <ActualLabel>Актуальное</ActualLabel>
               <ActualWrapper>
                 <ActualItem>

@@ -182,20 +182,27 @@ const MainModal = ({ handleClose }) => {
     APIService.changeEmail(emails, authTokens)
     .then(result => {
       if (result != 200) {
+        console.log(result)
         if (result['new_email']){
-          console.log(result['new_email'])
           if (result['new_email'] == 'Enter a valid email address.'){
             setNewEmailError('Некорректная почта')
           }
-          else {
-            setNewEmailError(result['new_email'])
+          if (result['new_email'] == 'This field may not be blank.'){
+            newEmailError = 'Это поле не должно быть пустым'
+            setNewEmailError(newEmailError)
           }
         }
-        if (result['old_email']){
-          setOldEmailError(result['old_email'])
+        if (result['old_email'] == 'This field may not be blank.'){
+          oldEmailError = 'Это поле не должно быть пустым'
+          setOldEmailError(oldEmailError)
         }
-        if (result['password']){
-          setPasswordError(result['password'])
+        if (result['old_email'] == 'Неверная почта'){
+          oldEmailError = 'Неверная почта'
+          setOldEmailError(oldEmailError)
+        }
+        if (result['password'] == 'This field may not be blank.'){
+          passwordError = 'Это поле не должно быть пустым'
+          setPasswordError(passwordError)
         }
       }
       else {
