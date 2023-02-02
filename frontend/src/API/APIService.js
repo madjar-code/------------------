@@ -45,6 +45,50 @@ export default class APIService {
     }
   }
 
+  static async getCurrentPR(authTokens) {
+    let response = await fetch('/api/recommendations/p-r/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + String(authTokens.access)
+      }
+    })
+    let data = await response.json()
+
+    if (response.status === 200) {
+      return data
+    }
+  }
+
+  static async getActualPR(authTokens) {
+    let response = await fetch('/api/recommendations/p-r/actual/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + String(authTokens.access)
+      }
+    })
+    let data = await response.json()
+
+    if (response.status === 200) {
+      return data
+    }
+  }
+
+  static async getOnePR(id) {
+    let response = await fetch(`/api/recommendations/p-r/${id}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    let data = await response.json()
+
+    if (response.status === 200) {
+      return data
+    }
+  }
+
   static async getTargets() {
     let response = await fetch('/api/routes/targets/', {
       method: 'GET',
@@ -72,6 +116,21 @@ export default class APIService {
       return data
     }
   }
+
+  static async getRecommendationCategories() {
+    let response = await fetch('/api/recommendations/categories/', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    let data = await response.json()
+
+    if (response.status === 200) {
+      return data
+    }
+  }
+
   static async changePassword(credentials, authTokens) {
     let response = await fetch('/api/users/change_password/', {
       method: 'PUT',

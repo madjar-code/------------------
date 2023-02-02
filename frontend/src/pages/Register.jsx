@@ -171,10 +171,12 @@ const Register = () => {
           else if (emailError == 'This field may not be blank.'){
             setEmailError('Поле обязательно для заполнения')
           }
+          setValid(false)
         }
-        setValid(false)
+        else {
+          setTimeout(() => navigate('/personal-account'), 1500)
+        }
       })
-    setTimeout(() => navigate('/personal-account'), 1500)
   }
 
   return(

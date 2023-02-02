@@ -32,6 +32,7 @@ import CareerTests from './pages/CareerTests';
 import CareerArticles from './pages/CareerArticles';
 import RouteDetails from './pages/RouteDetails';
 import ActualPage from './pages/ActualPage';
+import RecommendationDetails from './pages/RecommendationDetails';
 
 function PrivateRoute({ children }) {
   let { authTokens } = useContext(AuthContext)
@@ -156,6 +157,13 @@ function App() {
             element={
               <PrivateRoute>
                 <ActualPage/>
+              </PrivateRoute>
+            }/>
+          <Route
+            path='/recommendations/:id'
+            element={
+              <PrivateRoute>
+                <RecommendationDetails/>
               </PrivateRoute>
             }/>
           <Route path='/welcome' element={<Welcome/>}/>

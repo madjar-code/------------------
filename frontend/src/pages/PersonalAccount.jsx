@@ -62,7 +62,7 @@ const Actual = styled.div`
 `
 
 const ActualLabel = styled.h3`
-  padding-top: 25px;
+  padding-top: 20px;
   padding-left: 35px;
   font-size: 25px;
 `
@@ -92,6 +92,7 @@ const Image = styled.img`
 
 const Title = styled.p`
   margin-top: 10px;
+  width: 300px;
   text-align: center;
   font-size: 18px;
   font-weight: 500;
@@ -134,11 +135,19 @@ const IconWrapper = styled.div`
 const PersonalAccount = () => {
   let { authTokens } = useContext(AuthContext)
   let [currentUser, setCurrentUser] = useState(null)
+  let [actualItems, setActualItems] = useState([])
 
   useEffect(() => {
     APIService.getCurrentUser(authTokens)
       .then((data) => {
         setCurrentUser(data)
+      })
+  }, [authTokens])
+
+  useEffect(() => {
+    APIService.getActualPR(authTokens)
+      .then((data) => {
+        setActualItems(data)
       })
   }, [authTokens])
 
@@ -186,18 +195,12 @@ const PersonalAccount = () => {
                   marginTop: '25px'}}/>
               <ActualLabel>Актуальное</ActualLabel>
               <ActualWrapper>
-                <ActualItem>
-                  <Image src={image1}/>
-                  <Title>Заголовок</Title>
-                </ActualItem>
-                <ActualItem>
-                  <Image src={image2}/>
-                  <Title>Заголовок</Title>
-                </ActualItem>
-                <ActualItem>
-                  <Image src={image3}/>
-                  <Title>Заголовок</Title>
-                </ActualItem>
+                {actualItems.map(item => (
+                  <ActualItem>
+                    <Image src={item?.image}/>
+                    <Title>{item?.title}</Title>
+                  </ActualItem>
+                ))}
               </ActualWrapper>
             </Actual>
           </MiddleContainer>

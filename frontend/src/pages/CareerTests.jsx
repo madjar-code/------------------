@@ -1,9 +1,11 @@
+import { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
+import APIService from '../API/APIService';
 
-import image from '../assets/images/CareerTests.svg';
 import CenterContainer from '../components/CenterContainer';
 
 import Header from '../components/Header';
+import AuthContext from '../context/AuthContext';
 
 
 const Container = styled.div`
@@ -15,27 +17,25 @@ const Container = styled.div`
 
 const CareerTests = () => {
   let pageLabel = 'Тесты'
-  let items = [
-    {
-      id: 1,
-      image: image,
-      title: 'Название',
-      description: 'Описание',
-    },
-    {
-      id: 2,
-      image: image,
-      title: 'Название',
-      description: 'Описание',
-    },
-  ]
+  let { authTokens } = useContext(AuthContext)
+  let [items, setItems] = useState([])
+
+  useEffect(() => {
+    APIService.getCurrentPR(authTokens)
+    .then(items => {
+      let careerTests = items.filter(function(item) {
+        return item.recommendation.category == 22
+      })
+      setItems(careerTests)
+    })
+  }, [])
 
   return (
     <Container>
       <Header settings={false}/>
       <CenterContainer
         items={items}
-        pageLabel={pageLabel}/>      
+        pageLabel={pageLabel}/>
     </Container>
   )
 };

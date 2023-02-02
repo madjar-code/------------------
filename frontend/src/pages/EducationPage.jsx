@@ -1,9 +1,7 @@
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
-
-import image1 from '../assets/images/Education1.svg';
-import image2 from '../assets/images/Education2.svg';
-import image3 from '../assets/images/Education3.svg';
 import CenterContainer from '../components/CenterContainer';
+import APIService from '../API/APIService';
 
 import Header from '../components/Header';
 
@@ -17,29 +15,26 @@ const Container = styled.div`
 
 const EducationPage = () => {
   let pageLabel = 'Образование'
-  let items = [
-    {
-      id: 1,
-      image: image1,
-      title: 'Курсы',
-      description: 'Описание',
-      url: '/edu-courses'
-    },
-    {
-      id: 2,
-      image: image2,
-      title: 'Тесты',
-      description: 'Описание',
-      url: '/edu-tests'
-    },
-    {
-      id: 3,
-      image: image3,
-      title: 'Статьи',
-      description: 'Описание',
-      url: '/edu-articles'
-    }
-  ]
+  let [items, setItems] = useState([])
+
+  useEffect(() => {
+    APIService.getRecommendationCategories()
+    .then(items => {
+      let careerArr = items.filter(function(item) {
+        return (item.id > 10 && item.id < 20)
+      })
+      careerArr.map((item) => {
+        if (item.title == 'Курсы'){
+          item.url = '/edu-courses'
+        } else if (item.title == 'Тесты'){
+          item.url = '/edu-tests'
+        } else if (item.title == 'Статьи'){
+          item.url = '/edu-articles'
+        }
+      })
+      setItems(careerArr)
+    })
+  }, [])
 
   return (
     <Container>

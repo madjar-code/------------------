@@ -78,16 +78,24 @@ const BackButton = styled.button`
 
 const CenterContainer = ({pageLabel, items}) => {
   const navigate = useNavigate()
+
+  const handleClick = (url, id) => {
+    if (url) {
+      navigate(url)
+    } else {
+      navigate(`/recommendations/${id}`)
+    }
+  }
   return (
     <Container>
       <ItemsContainer>
         <BigLabel>{pageLabel}:</BigLabel>
         {items.map((item, index) =>(
-          <Item>
+          <Item key={index}>
           <Image src={item?.image}/>
           <Title>{item?.title}</Title>
           <Description>{item?.description}</Description>
-          <Link src={arrow} onClick={() => navigate(item?.url)}/>
+          <Link src={arrow} onClick={() => handleClick(item?.url, item?.id)}/>
           </Item>
         ))}
       </ItemsContainer>

@@ -1,6 +1,8 @@
+import { useState, useContext, useEffect } from 'react'
+import AuthContext from '../context/AuthContext';
 import styled from 'styled-components'
 
-import image from '../assets/images/Actual.svg';
+import APIService from '../API/APIService';
 import CenterContainer from '../components/CenterContainer';
 
 import Header from '../components/Header';
@@ -15,20 +17,15 @@ const Container = styled.div`
 
 const ActualPage = () => {
   let pageLabel = 'Актуальное'
-  let items = [
-    {
-      id: 1,
-      image: image,
-      title: 'Название',
-      description: 'Описание',
-    },
-    {
-      id: 2,
-      image: image,
-      title: 'Название',
-      description: 'Описание',
-    },
-  ]
+  let { authTokens } = useContext(AuthContext)
+  let [items, setItems] = useState([])
+  
+  useEffect(() => {
+    APIService.getActualPR(authTokens)
+      .then((data) => {
+        setItems(data)
+      })
+  }, [authTokens])
 
   return (
     <Container>

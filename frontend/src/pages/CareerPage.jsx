@@ -1,10 +1,7 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components'
+import APIService from '../API/APIService';
 
-import image1 from '../assets/images/Career1.svg';
-import image2 from '../assets/images/Career2.svg';
-import image3 from '../assets/images/Career3.svg';
 import CenterContainer from '../components/CenterContainer';
 
 import Header from '../components/Header';
@@ -19,36 +16,33 @@ const Container = styled.div`
 
 const CareerPage = () => {
   let pageLabel = 'Карьера'
-  let [items, setItems] = useState(
-    [{
-      id: 1,
-      image: image1,
-      title: 'Вакансии',
-      description: 'Описание',
-      url: '/career-vacancies'
-    },
-    {
-      id: 2,
-      image: image2,
-      title: 'Тесты',
-      description: 'Описание',
-      url: '/career-tests'
-    },
-    {
-      id: 3,
-      image: image3,
-      title: 'Статьи',
-      description: 'Описание',
-      url: '/career-articles'
-    }]
-  )
+  let [items, setItems] = useState([])
+
+  useEffect(() => {
+    APIService.getRecommendationCategories()
+    .then(items => {
+      let careerArr = items.filter(function(item) {
+        return (item.id > 20 && item.id < 30)
+      })
+      careerArr.map((item) => {
+        if (item.title == 'Вакансии'){
+          item.url = '/career-vacancies'
+        } else if (item.title == 'Тесты'){
+          item.url = '/career-tests'
+        } else if (item.title == 'Статьи'){
+          item.url = '/career-articles'
+        }
+      })
+      setItems(careerArr)
+    })
+  }, [])
 
   return (
     <Container>
       <Header settings={false}/>
       <CenterContainer
         items={items}
-        pageLabel={pageLabel}/>      
+        pageLabel={pageLabel}/>
     </Container>
   )
 };

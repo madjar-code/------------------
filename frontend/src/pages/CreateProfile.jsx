@@ -288,6 +288,21 @@ const Block = styled.div`
   align-items: center;
 `
 
+const ChechboxContainer = styled.div`
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+`
+
+const EndYearCheckbox = styled.input`
+  border: none;
+  width: 14px;
+  height: 14px;
+  accent-color: #FF7F50;
+`
+
+const EndDateCheckbox = EndYearCheckbox
+
 const ModalBigLabel = styled.h2`
   color: #3D3B39;
   font-size: 22.5px;
@@ -692,6 +707,17 @@ const CreateProfile = () => {
             value={eduCredentials.end_year}
             onChange={e => setEduCredentials({...eduCredentials, end_year: e.target.value})}
             placeholder="Год"/>
+          <ChechboxContainer>
+            <EndYearCheckbox
+              type='checkbox'
+              checked={eduCredentials.until_now_flag}
+              onChange={() => {
+                eduCredentials.until_now_flag = !eduCredentials.until_now_flag
+                setEduCredentials({...eduCredentials, until_now_flag: eduCredentials.until_now_flag})
+              }}
+              />
+            По настоящее время
+          </ChechboxContainer>
             {
               endYearError
             ?
@@ -824,6 +850,17 @@ const CreateProfile = () => {
             value={jobCredentials.end_date}
             onChange={e => setJobCredentials({...jobCredentials, end_date: e.target.value})}
             placeholder="ГГГГ-ММ-ДД"/>
+          <ChechboxContainer>
+            <EndDateCheckbox
+              type='checkbox'
+              checked={jobCredentials.until_now_flag}
+              onChange={() => {
+                jobCredentials.until_now_flag = !jobCredentials.until_now_flag
+                setJobCredentials({...jobCredentials, until_now_flag: jobCredentials.until_now_flag})
+              }}
+              />
+            По настоящее время
+          </ChechboxContainer>
           {
             startDateError
           ?

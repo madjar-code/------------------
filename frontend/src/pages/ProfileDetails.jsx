@@ -269,7 +269,7 @@ const ProfileDetails = () => {
   if ( profile?.first_name != '' || profile?.last_name != ''){
     full_name = profile?.first_name + ' ' + profile?.last_name
   } else {
-    full_name = 'Имя и фамилия не указаны'
+    full_name = '-'
   }
 
   return (
