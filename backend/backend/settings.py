@@ -120,6 +120,20 @@ DATABASES = {
     }
 }
 
+# DATABASES = { 
+#     'default': { 
+#         'ENGINE': 'django.db.backends.mysql', 
+#         'NAME': 'mysqladmin',
+#         'USER': 'root', 
+#         'PASSWORD': 'aiTae9feiNah', 
+#         'HOST': '134.0.113.174', 
+#         'PORT': '8000',
+#         'OPTIONS': { 
+#             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'" 
+#         } 
+#     } 
+# }
+
 AUTH_PASSWORD_VALIDATORS = []
 
 LANGUAGE_CODE = "en-us"

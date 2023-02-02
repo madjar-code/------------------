@@ -1,20 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.f88e12ee.css",
-    "main.js": "/static/js/main.47143af6.js",
+    "main.js": "/static/js/main.85ad5751.js",
     "static/media/Inter-V.ttf": "/static/media/Inter-V.89a1d07172df41191baa.ttf",
-    "static/media/Actual.svg": "/static/media/Actual.cfc74700a30fd2c36f732a633e35c856.svg",
-    "static/media/Career3.svg": "/static/media/Career3.2b6cc4900c48f313f74811ba841630df.svg",
     "static/media/EduArticles.svg": "/static/media/EduArticles.d40c96f7c10c5f5e9e8144ebe9397fb9.svg",
-    "static/media/Education3.svg": "/static/media/Education3.fa82c74026c5fcc7176280e0b48dc972.svg",
     "static/media/PA3.svg": "/static/media/PA3.295d056b0d792abb2cc54c151c379cad.svg",
     "static/media/CreateProfileModal.svg": "/static/media/CreateProfileModal.049ef81623dbdf66aae50eb9cfb0e6e5.svg",
     "static/media/PA4.svg": "/static/media/PA4.27b1ba1dfd44f5dc07d5cd7b12390377.svg",
     "static/media/PA5.svg": "/static/media/PA5.d39ada12b8400c93c55d19e226d976d4.svg",
-    "static/media/EduCourses.svg": "/static/media/EduCourses.e85bca28b49d9a50e70ab8050066b6b1.svg",
-    "static/media/Education1.svg": "/static/media/Education1.8fad20fe25957fa52fed8d25b13942b8.svg",
     "static/media/PA6.svg": "/static/media/PA6.4927e0f2169a978ab748f4230f6dd0ea.svg",
     "static/media/ProfileDetails.svg": "/static/media/ProfileDetails.30ef0f889e1b70f7317de0d6189de426.svg",
+    "static/media/CreateRoute6.svg": "/static/media/CreateRoute6.c1faf9f31ae780e803c1679759b414e4.svg",
     "static/media/MyRoutes.svg": "/static/media/MyRoutes.a680d298e3ec3e7677c3cc14d369616b.svg",
     "static/media/PA2.svg": "/static/media/PA2.73ac8b70b20710ca2971626fcc81c015.svg",
     "static/media/CreateRoute3.svg": "/static/media/CreateRoute3.88800afc957433ffc238bdbae421fba4.svg",
@@ -27,13 +23,7 @@
     "static/media/CreateRoute2.svg": "/static/media/CreateRoute2.a5ef600a4607cc42eb7d762d540cebb1.svg",
     "static/media/PAModal2.svg": "/static/media/PAModal2.915553174b49438e8f19e592572bb7e9.svg",
     "static/media/MyProfiles3.svg": "/static/media/MyProfiles3.4c41b5fe2a029d5b4fc40dbffba30591.svg",
-    "static/media/Career2.svg": "/static/media/Career2.014a2b11392c3f293c8d0919e8046691.svg",
-    "static/media/CareerTests.svg": "/static/media/CareerTests.5e9146eeb76cbba5f2bb5574fdf891d9.svg",
-    "static/media/EduTests.svg": "/static/media/EduTests.8c5e6775f5f829fbc630d16a257c2ae0.svg",
-    "static/media/Education2.svg": "/static/media/Education2.1c56307e2ea75986860df99dba60783c.svg",
     "static/media/CreateProfileModal2.svg": "/static/media/CreateProfileModal2.a61fffe298da70f10df76e144263618b.svg",
-    "static/media/Career1.svg": "/static/media/Career1.70d0154a872f9dcc7fc13062d7bb95e6.svg",
-    "static/media/CareerVacancies.svg": "/static/media/CareerVacancies.b9f9a758a5b504df6545a606d9b770d3.svg",
     "static/media/PA7.svg": "/static/media/PA7.6469fff89e1ccb36303f84b7553acb02.svg",
     "static/media/MyProfiles.svg": "/static/media/MyProfiles.d11402aeb6fe8230947b3cc45a6a2cc8.svg",
     "static/media/PA.svg": "/static/media/PA.5642168c58542383cf805b06e866f6ff.svg",
@@ -61,10 +51,10 @@
     "static/media/selectIcon.svg": "/static/media/selectIcon.d6a1779298b86aef97808ff79d43c2e2.svg",
     "static/media/selectIcon2.svg": "/static/media/selectIcon2.713fb8c01e5525409f19065c9c528421.svg",
     "main.f88e12ee.css.map": "/static/css/main.f88e12ee.css.map",
-    "main.47143af6.js.map": "/static/js/main.47143af6.js.map"
+    "main.85ad5751.js.map": "/static/js/main.85ad5751.js.map"
   },
   "entrypoints": [
     "static/css/main.f88e12ee.css",
-    "static/js/main.47143af6.js"
+    "static/js/main.85ad5751.js"
   ]
 }

@@ -515,9 +515,6 @@ const CreateProfile = () => {
           if (result['external_CV_link'] == 'Enter a valid URL.'){
             setLinkError('Некорректная ссылка')
           }
-          else if (result['external_CV_link'] == 'This field may not be blank.'){
-            setLinkError('Это поле не может быть пустым')
-          }
         }
         else {
           APIService.createCV(CVCredentials).
@@ -755,7 +752,7 @@ const CreateProfile = () => {
           <ModalImage src={image7}/>
           <ModalMediumLabel>Отличная работа, финиш уже совсем близко</ModalMediumLabel>
           <InputWrapper>
-            <ModalSmallLabel>Компания<Star>*</Star></ModalSmallLabel>
+            <ModalSmallLabel>Ссылка на резюме с hh.ru</ModalSmallLabel>
             <ModalInput
               value={jobCredentials.external_CV_link}
               onChange={e => setJobCredentials({...jobCredentials, external_CV_link: e.target.value})}

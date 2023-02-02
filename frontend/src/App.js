@@ -166,7 +166,7 @@ function App() {
                 <RecommendationDetails/>
               </PrivateRoute>
             }/>
-          <Route path='/welcome' element={<Welcome/>}/>
+          <Route path='/' element={<Welcome/>}/>
           <Route path='/ask' element={<Ask/>}/>
           <Route path='/password-reset' element={<PasswordReset/>}/>
         </Routes>

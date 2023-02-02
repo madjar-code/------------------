@@ -5,6 +5,7 @@ import APIService from "../../API/APIService"
 import image from '../../assets/images/CloseIcon.svg'
 import image2 from '../../assets/images/CreateRoute2.svg'
 import image3 from '../../assets/images/CreateRoute3.svg'
+import image4 from '../../assets/images/CreateRoute6.svg'
 import AuthContext from "../../context/AuthContext"
 import Button from "../Button"
 import MySelect from "../MySelect"
@@ -33,6 +34,21 @@ const ErrorMessage = styled.p`
   margin-bottom: -12px;
   font-size: 12px;
   color: #FF4D4F;
+`
+
+const NoProfilesBlock = styled.div`
+  position: relative;
+  width: 527px;
+  min-height: 300px;
+  border-radius: 15px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const Star = styled.span`
+  color: red;
 `
 
 const TitleBlock = styled.div`
@@ -175,7 +191,13 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
 
   useEffect(() => {
     APIService.getCurrentProfiles(authTokens)
-    .then(result => setProfiles(result))
+    .then(result => {
+      setProfiles(result)
+      if (result.length == 0){
+        setModalState('no profiles')
+      }
+    })
+      
     APIService.getRouteTypes()
     .then(result => setRouteTypes(result))
     APIService.getTargets()
@@ -184,19 +206,36 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
 
   let content;
 
-  if (modalState == 'route title') {
+  if (modalState == 'no profiles'){
+    content = (
+      <NoProfilesBlock>
+        <CloseButton
+          src={image}
+          onClick={() => navigate('/my-routes')}
+        />
+        <BigLabel>
+          Не найдено ни одной анкеты!
+        </BigLabel>
+        <Image src={image4}/>
+        <ButtonWrapper>
+          <Button width="366px" height="46px" text="Заполнить анкету"
+            handler={() => navigate('/create-profile')}/>
+        </ButtonWrapper>
+      </NoProfilesBlock>
+    )
+  } else if (modalState == 'route title') {
     content = (
       <TitleBlock>
         <CloseButton
           src={image}
-          onClick={handleClose}
+          onClick={() => navigate('/my-routes')}
         />
         <BigLabel>
           Как лодку назовешь, так она и поплывет
         </BigLabel>
         <Image src={image3}/>
         <InputWrapper>
-          <SmallLabel>Название маршрута</SmallLabel>
+          <SmallLabel>Название маршрута<Star>*</Star></SmallLabel>
           <Input placeholder="Введите текст..."
             value={route.title} onChange={(e) => setRoute({...route, title: e.target.value})}/>
           {
@@ -233,7 +272,7 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
         </BigLabel>
         <Image src={image3}/>
         <SelectsWrapper>
-          <SmallLabel>Анкета</SmallLabel>
+          <SmallLabel>Анкета<Star>*</Star></SmallLabel>
           <MySelect
             listName="Выберите анкету"
             items={profiles}
@@ -247,7 +286,7 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
           :
             <></>
           }
-          <SmallLabel>Карьерный трек</SmallLabel>
+          <SmallLabel>Карьерный трек<Star>*</Star></SmallLabel>
           <MySelect
             listName="Выберите трек"
             items={routeTypes}
@@ -261,7 +300,7 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
           :
             <></>
           }
-          <SmallLabel>Желаемая цель</SmallLabel>
+          <SmallLabel>Желаемая цель<Star>*</Star></SmallLabel>
           <MySelect
             listName="Выберите цель"
             items={targets}

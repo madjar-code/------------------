@@ -69,7 +69,7 @@ class Job(TimeStampedModel):
     until_now_flag = models.BooleanField(default=False)
   
     CV = models.ForeignKey(to=CV, on_delete=models.CASCADE, related_name='jobs')
-    external_CV_link = models.URLField(max_length=512)
+    external_CV_link = models.URLField(max_length=512, blank=True, null=True)
 
     def __str__(self) -> str:
         return f'{self.CV.user} <-> {self.company} <-> {self.position}'
