@@ -327,46 +327,4 @@ export default class APIService {
     })
     return response.json()
   }
-
-  static async getRouteBetween(route){
-    let response = await fetch(`http://127.0.0.1:8001/api/v1/careers/route-between-${route.start_node}--${route.target_node}/`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    let data = await response.json()
-
-    if (response.status === 200) {
-      return data
-    }
-  }
-
-  static async getRouteBy(route){
-    let response = await fetch(`http://127.0.0.1:8001/api/v1/careers/route-by-${route.start_node}/`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    let data = await response.json()
-
-    if (response.status === 200) {
-      return data
-    }
-  }
-
-  static async getRouteTo(route){
-    let response = await fetch(`http://127.0.0.1:8001/api/v1/careers/route-to-${route.target_node}/`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    let data = await response.json()
-
-    if (response.status === 200) {
-      return data
-    }
-  }
 }

@@ -11,9 +11,11 @@ class CreateRouteSerializer(ModelSerializer):
             'id',
             'title',
             'user',
-            'CV',
+            # 'CV',
             'route_type',
-            'target',
+            'start_node',
+            'end_node',
+            # 'target',
             )
 
 

@@ -69,7 +69,7 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
     user: user?.user_id,
     start_node: '',
     route_type: '',
-    target_node: ''
+    end_node: ''
   })
 
   let [titleError, setTitleError] = useState('')
@@ -94,44 +94,19 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
       isValid = false
       setValid(isValid)
     }
-    if (route.target_node == ''){
+    if (route.end_node == ''){
       setTargerError('Выберите цель')
       isValid = false
       setValid(isValid)
     }
     if (isValid == true) {
-      if (route.route_type == 1){
-        APIService.getRouteBetween(route)
-          .then(result => {
-            if (result.message == 'OK'){
-              
-            }
-          })
-      }
-      else if (route.route_type == 2){
-        APIService.getRouteBy(route)
-          .then(result => console.log(result))
-      }
-      else if (route.route_type == 3){
-        APIService.getRouteTo(route)
-          .then(result => console.log(result))
-      }
+      APIService.createRoute(route)
     }
   }
 
   useEffect(() => {
-    APIService.getCurrentProfiles(authTokens)
-    .then(result => {
-      setProfiles(result)
-      if (result.length == 0){
-        setModalState('no profiles')
-      }
-    })
-      
     APIService.getRouteTypes()
     .then(result => setRouteTypes(result))
-    // APIService.getTargets()
-    // .then(result => setTargets(result))
   }, [])
 
   let content;
@@ -234,8 +209,8 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
           <MySelect
             listName="Выберите цель"
             items={endNodes}
-            selectedItem={route.target_node}
-            setSelectedItem={(item) => setRoute({...route, target_node: item?.id})}
+            selectedItem={route.end_node}
+            setSelectedItem={(item) => setRoute({...route, end_node: item?.id})}
           />
           {
             targetError
