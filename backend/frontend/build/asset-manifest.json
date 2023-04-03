@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.f88e12ee.css",
-    "main.js": "/static/js/main.85ad5751.js",
+    "main.js": "/static/js/main.8c5ac8fa.js",
     "static/media/Inter-V.ttf": "/static/media/Inter-V.89a1d07172df41191baa.ttf",
     "static/media/EduArticles.svg": "/static/media/EduArticles.d40c96f7c10c5f5e9e8144ebe9397fb9.svg",
     "static/media/PA3.svg": "/static/media/PA3.295d056b0d792abb2cc54c151c379cad.svg",
@@ -51,10 +51,10 @@
     "static/media/selectIcon.svg": "/static/media/selectIcon.d6a1779298b86aef97808ff79d43c2e2.svg",
     "static/media/selectIcon2.svg": "/static/media/selectIcon2.713fb8c01e5525409f19065c9c528421.svg",
     "main.f88e12ee.css.map": "/static/css/main.f88e12ee.css.map",
-    "main.85ad5751.js.map": "/static/js/main.85ad5751.js.map"
+    "main.8c5ac8fa.js.map": "/static/js/main.8c5ac8fa.js.map"
   },
   "entrypoints": [
     "static/css/main.f88e12ee.css",
-    "static/js/main.85ad5751.js"
+    "static/js/main.8c5ac8fa.js"
   ]
 }
