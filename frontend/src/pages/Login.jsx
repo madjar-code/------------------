@@ -205,7 +205,7 @@ const Login = () => {
             !error
             ?
               <Memorization>
-                <Link>Не помню пароль</Link>
+                {/* <Link>Не помню пароль</Link> */}
                 <CheckboxContainer>
                   <Checkbox type="checkbox"/>
                   Запомнить пароль
@@ -214,7 +214,7 @@ const Login = () => {
             :
               <ErrorContainer>
                 <ErrorMessage><ErrorIcon/> Неверный Логин или Пароль</ErrorMessage>
-                <ErrorLink>Не помню пароль</ErrorLink>
+                {/* <ErrorLink>Не помню пароль</ErrorLink> */}
               </ErrorContainer>
             }
 

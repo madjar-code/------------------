@@ -82,13 +82,15 @@ const RouteDetails = () => {
 
   useEffect(() => {
     APIService.getOneRoute(params.id)
-    .then(data => setRoute(data))
+    .then(data => {setRoute(data); console.log(data)})
   }, [params.id])
+
+  console.log(route?.html_file)
 
   let rawHTML = route?.html_code
 
   if (!rawHTML){
-    rawHTML = '<h4>Нет контента статьи</h2>'
+    rawHTML = `<a href=${route?.html_file}>Ссылка на ваш карьерный маршрут</a>`
   }
 
   const handleCloseModal = () => {

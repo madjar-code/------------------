@@ -8,7 +8,7 @@ from rest_framework.generics import\
 from rest_framework.parsers import\
     MultiPartParser, FormParser, JSONParser
 from routes.services.graph_file import\
-    visualize_route_AB
+    *
 from routes.models import *
 from .serializers import *
 
@@ -48,7 +48,7 @@ class CreateRouteView(CreateAPIView):
     parser_classes = (MultiPartParser, FormParser, JSONParser)
     serializer_class = CreateRouteSerializer
     
-    CAREER_API = 'http://127.0.0.1:8001/api/v1/careers'
+    CAREER_API = 'http://89.108.99.86/api/v1/careers'
 
     def post(self, request: Request) -> Response:
         data: dict = request.data
@@ -65,14 +65,34 @@ class CreateRouteView(CreateAPIView):
             response: Response = requests.get(f'{self.CAREER_API}/{POSTFIX}/')
             graph_data: dict = response.json()
             if graph_data['message'] == 'No path':
-                return Response({'message': 'No path'}, status.HTTP_400_BAD_REQUEST)
+                return Response({'message': 'No path'}, status.HTTP_200_OK)
 
             route_obj: Route = serializer.save()
             list_of_node_ids: list = graph_data['list_of_node_ids']
             id_name_dict: dict = graph_data['id_name_dict']
             route_obj.html_file = visualize_route_AB(list_of_node_ids, id_name_dict)
             route_obj.save()
-            
+
+        elif type_code == 2:
+            POSTFIX = f'route-by-{start_node_id}'
+            response: Response = requests.get(f'{self.CAREER_API}/{POSTFIX}/')
+            graph_data: dict = response.json()
+            route_obj: Route = serializer.save()
+            tree_dict: dict = graph_data['tree_dict']
+            id_name_dict: dict = graph_data['id_name_dict']
+            route_obj.html_file = visualize_routes_A(tree_dict, id_name_dict)
+            route_obj.save()
+        
+        elif type_code == 3:
+            POSTFIX = f'route-to-{end_node_id}'
+            response: Response = requests.get(f'{self.CAREER_API}/{POSTFIX}/')
+            graph_data: dict = response.json()
+            route_obj: Route = serializer.save()
+            tree_dict: dict = graph_data['tree_dict']
+            id_name_dict: dict = graph_data['id_name_dict']
+            route_obj.html_file = visualize_routes_B(tree_dict, id_name_dict)
+            route_obj.save()
+
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
 

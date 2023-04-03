@@ -101,6 +101,16 @@ const CenterModal = ({ handleClose, handleComplete, setRouteID }) => {
     }
     if (isValid == true) {
       APIService.createRoute(route)
+        .then(result => {
+          if (result.message == 'No path'){
+            alert('Не удалось построить путь между этими профессиями')
+            return
+          }
+          setRouteID(result.id)
+          handleClose()
+          handleComplete()
+        }
+      )
     }
   }
 
